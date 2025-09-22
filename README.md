@@ -68,9 +68,9 @@ We use tr to translate ASCII values to the ones mentioned, shifted by 13. On the
 ## Level 12 -> Level 13
 
 We check the type of the file, move it to a file with the corresponding suffix, and decode each step according to the instructions until the password.
-![Image not found](screenshots/b12.png)
-![Image not found](screenshots/b12.1.png)
 ![Image not found](screenshots/b12.12.png)
+![Image not found](screenshots/b12.1.png)
+![Image not found](screenshots/b12.png)
 
 ## Level 13 -> Level 14
 
