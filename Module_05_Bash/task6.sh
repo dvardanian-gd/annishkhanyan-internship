@@ -10,7 +10,7 @@ REPORT_FILE="report.txt"
   echo "Hostname: $(hostname)"
   echo "Internal IP: $(hostname -I | awk '{print $1}')"
   echo "External IP: $(curl -s ifconfig.me)"
-  echo "Linux Distro: $(lsb_release -ds 2>/dev/null"
+  echo "Linux Distro: $(lsb_release -ds 2>/dev/null)"
   echo "Disk Usage (/) in GB:"
   df -h / | awk 'NR==2 {print "  Used: "$3" / Total: "$2}' # NR==2 for the second line
   echo "Memory (RAM):"
