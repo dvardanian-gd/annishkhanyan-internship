@@ -10,7 +10,7 @@ while getopts ":s:i:o:" opt; do
 done
 
 if [[ -z "$shift_val" || -z "$input_val" || -z "$output_file" ]]; then # check the input
-    echo "invalid input format"
+    echo "Invalid input format" >&2
     exit 1
 fi
 
@@ -26,11 +26,13 @@ caesar() {
         if [[ $char =~ [A-Z] ]]; then
             upd=$((asc + shift))
             ((upd > 90)) && upd=$((upd - 26))
+            ((upd < 65)) && upd=$((upd + 26)) # fix for negative shift
             res+=$(printf "%b" "\\$(printf '%03o' "$upd")")
 
         elif [[ $char =~ [a-z] ]]; then
             upd=$((asc + shift))
             ((upd > 122)) && upd=$((upd - 26))
+            ((upd < 97)) && upd=$((upd + 26)) # fix for negative shift
             res+=$(printf "%b" "\\$(printf '%03o' "$upd")")
 
         else

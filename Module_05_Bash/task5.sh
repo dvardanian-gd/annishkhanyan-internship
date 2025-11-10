@@ -14,8 +14,8 @@ while getopts ":vs:rli:o:u" opt; do
         s)
             operation="s"
             word1="$OPTARG"
-            word2="${!OPTIND}"   # optind keeps the index of the opt arguments, here we expand the next varialble
-            shift                # and we need to skip it as we saved it in  word2
+            word2="${!OPTIND}"   # get the next argument after -s
+            ((OPTIND++))         # increment OPTIND to skip it
             ;;
         r)
             operation="r"
@@ -33,27 +33,33 @@ while getopts ":vs:rli:o:u" opt; do
             output_file="$OPTARG"
             ;;
         *)
-            echo "Invalid input"
+            echo "Invalid input" >&2
+            exit 1
             ;;
     esac
 done
 
+# Validate required arguments
 if [[ -z "$input_file" || -z "$output_file" || -z "$operation" ]]; then
-    echo "Invalid input"
-fi
-
-if [[ ! -f "$input_file" ]]; then
-    echo "invalid file"
+    echo "Invalid input: missing -i, -o, or operation flag" >&2
     exit 1
 fi
 
+# Check if input file exists
+if [[ ! -f "$input_file" ]]; then
+    echo "Invalid file: $input_file not found" >&2
+    exit 1
+fi
+
+# Main logic
 case "$operation" in
     v)
         tr 'a-zA-Z' 'A-Za-z' < "$input_file" > "$output_file"
         ;;
     s)
         if [[ -z "$word1" || -z "$word2" ]]; then
-            echo "Invalid format, we need to words after -s"
+            echo "Invalid format: two words required after -s" >&2
+            exit 1
         fi
         sed "s/${word1}/${word2}/g" "$input_file" > "$output_file"
         ;;
@@ -67,6 +73,7 @@ case "$operation" in
         tr '[:lower:]' '[:upper:]' < "$input_file" > "$output_file"
         ;;
     *)
-        echo "Invalid input"
+        echo "Invalid operation" >&2
+        exit 1
         ;;
 esac
