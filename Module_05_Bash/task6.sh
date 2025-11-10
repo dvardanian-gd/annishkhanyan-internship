@@ -1,5 +1,13 @@
 #!/bin/bash
 
+for cmd in uptime df free; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo "Error: '$cmd' not found" >&2
+        exit 1
+    fi
+done
+
+
 REPORT_FILE="report.txt"
 
 {
@@ -18,6 +26,6 @@ REPORT_FILE="report.txt"
   echo "CPU:"
   echo "  Cores: $(nproc)"
   echo "  Frequency: $(lscpu | grep 'MHz' | awk '{print $3" MHz"}' | head -1)"
-} > "$REPORT_FILE"
+} > "$REPORT_FILE" 2>/dev/null
 
 echo "Report saved to $REPORT_FILE"
