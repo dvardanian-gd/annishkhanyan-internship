@@ -51,7 +51,7 @@ def create_survey(name):
     response = requests.post(url, headers=headers, json=payload, timeout=10)
 
     if response.status_code not in (200, 201):
-        print("Failed to create survey")
+        print("Failed to create the survey")
         print("Status:", response.status_code)
         print("Response:", response.text)
         sys.exit(1)
