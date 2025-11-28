@@ -1,0 +1,18 @@
+{
+  "Customer Feedback Survey": {
+    "Main Page": {
+      "Satisfaction Level": {
+        "Description": "How satisfied are you?",
+        "Answers": ["Very satisfied", "Neutral", "Not satisfied"]
+      },
+      "Service Speed": {
+        "Description": "How fast was the service?",
+        "Answers": ["Fast", "Average", "Slow"]
+      },
+      "Recommendation": {
+        "Description": "Would you recommend us?",
+        "Answers": ["Yes", "No"]
+      }
+    }
+  }
+}
