@@ -5,13 +5,13 @@ Script for creating a SurveyMonkey survey from a JSON file.
 import sys
 import json
 import requests
-
+from dotenv import load_dotenv
+import os
 
 API_BASE = "https://api.surveymonkey.com/v3"
-TOKEN = (
-    "lMsBrzQ04CQ89elrGwz-gwLBg6BLO48tRjX720KwLu-9TziyWCmGdlHG7arU3TpjDNqyVcMXgvzu"
-    "8o6qz2-YcxOXLhTdp2sZyC.KKDwZ4IxkjSadkG0ZsNUvMwSN5WbS"
-)
+
+load_dotenv()
+TOKEN = os.getenv("ACCESS_TOKEN")
 
 
 def load_questions_json(path):
@@ -33,14 +33,18 @@ def extract_survey_name(data):
     if not data:
         print("Error: JSON is empty")
         sys.exit(1)
-    return  list(data.keys())[0]
 
+    return list(data.keys())[0]
 
 
 def create_survey(name):
     """
     Create a new survey in SurveyMonkey and return its ID.
     """
+    if not TOKEN:
+        print("ERROR: ACCESS_TOKEN is missing. Add it to your .env file.")
+        sys.exit(1)
+
     url = f"{API_BASE}/surveys"
     headers = {
         "Authorization": f"Bearer {TOKEN}",
@@ -51,10 +55,14 @@ def create_survey(name):
     response = requests.post(url, headers=headers, json=payload, timeout=10)
 
     if response.status_code not in (200, 201):
-        print("Failed to create the survey")
+        print("Failed to create survey")
         print("Status:", response.status_code)
         print("Response:", response.text)
         sys.exit(1)
+
+    # Return the survey ID from the response
+    return response.json().get("id")
+
 
 def main():
     """
@@ -69,7 +77,11 @@ def main():
     data = load_questions_json(json_path)
     survey_name = extract_survey_name(data)
 
-    print(f"Survey '{survey_name}' was created successfully")
+    survey_id = create_survey(survey_name)
+
+    print(f"Survey '{survey_name}' was created successfully!")
+    print(f"Survey ID: {survey_id}")
+
 
 if __name__ == "__main__":
     main()
