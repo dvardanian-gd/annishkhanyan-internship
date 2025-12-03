@@ -8,12 +8,14 @@ import sys
 
 def extension_check(filename):
     """Checks whether the given filename contains an extension."""
-    match = re.match(r'\w+\.(\w+)', filename)
+    
+    match = re.match(r'.*?\.([^.]+)$', filename)
 
     if not match:
         raise ValueError("No file extension found")
 
     print(f"File extension is {match.group(1)}")
+
 
 
 def main():
