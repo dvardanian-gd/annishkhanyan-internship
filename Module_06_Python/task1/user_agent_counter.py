@@ -13,8 +13,7 @@ def open_log_file(file_path):
     """Opens either a gzip-compressed file or a normal text file."""
     if file_path.endswith(".gz"):
         return gzip.open(file_path, 'rt', encoding='utf-8', errors='ignore')
-    else:
-        return open(file_path, 'r', encoding='utf-8', errors='ignore')
+    return open(file_path, 'r', encoding='utf-8', errors='ignore')
 
 def user_agent_counter(file_path):
     """Reads a .gz access log and counts unique User-Agent strings."""
@@ -26,7 +25,7 @@ def user_agent_counter(file_path):
 
     with open_log_file(file_path) as f:  # open gzip file in text mode
         for line in f:
-            match = re.search(r'"([^"]*)"$', line)  # user-Agent is the last quoted string in the line
+            match = re.search(r'"([^"]*)"$', line)  # the last quoted string in the line
             if match:
                 ua = match.group(1).strip()
                 if ua:

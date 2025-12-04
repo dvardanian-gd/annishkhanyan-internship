@@ -1,17 +1,17 @@
 {
   "Customer Feedback Survey": {
     "Main Page": {
-      "Satisfaction Level": {
-        "Description": "How satisfied are you?",
-        "Answers": ["Very satisfied", "Neutral", "Not satisfied"]
+      "Favorite color": {
+        "Description": "What's your favorite color?",
+        "Answers": ["Blue", "Black", "Red"]
       },
       "Service Speed": {
-        "Description": "How fast was the service?",
-        "Answers": ["Fast", "Average", "Slow"]
+        "Description": "Do you have a pet?",
+        "Answers": ["Yes", "No"]
       },
       "Recommendation": {
-        "Description": "Would you recommend us?",
-        "Answers": ["Yes", "No"]
+        "Description": "Which one would you prefer to have as a pet?",
+        "Answers": ["Cats", "Dogs"]
       }
     }
   }
