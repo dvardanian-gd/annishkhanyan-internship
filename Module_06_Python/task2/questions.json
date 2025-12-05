@@ -1,0 +1,18 @@
+{
+  "Customer Feedback Survey": {
+    "Main Page": {
+      "Favorite color": {
+        "Description": "What's your favorite color?",
+        "Answers": ["Blue", "Black", "Red"]
+      },
+      "Service Speed": {
+        "Description": "Do you have a pet?",
+        "Answers": ["Yes", "No"]
+      },
+      "Recommendation": {
+        "Description": "Which one would you prefer to have as a pet?",
+        "Answers": ["Cats", "Dogs"]
+      }
+    }
+  }
+}
