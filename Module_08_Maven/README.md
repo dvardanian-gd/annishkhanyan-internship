@@ -1,6 +1,8 @@
 # Maven Practical Task
 ## Step 1: Environment Setup
 
+Forked repository: https://github.com/anna-ishkhanyan/spring-petclinic.git
+
 The latest versions of Java and Apache Maven were installed locally. The installation was verified using java -version and mvn -version.
 
 ![1](screenshots/1.png)
