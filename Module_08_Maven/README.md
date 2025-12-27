@@ -29,6 +29,7 @@ The application was started locally and accessed through a web browser. The Spri
 The project’s major version was increased according to the task requirements.
 
 ![9](screenshots/9.png)
+![13](screenshots/13.png)
 
 ## Step 6: SCM Configuration
 
