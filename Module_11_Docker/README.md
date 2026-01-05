@@ -2,7 +2,7 @@
 ## Task 1
 Repository: https://github.com/anna-ishkhanyan/spring-petclinic.git
 
-This task demonstrates containerization of the Spring petClinic application.
+This task demonstrates containerization of the Spring petclinic application.
 
 ### Step 1 
 Cloned the repository of the app:
