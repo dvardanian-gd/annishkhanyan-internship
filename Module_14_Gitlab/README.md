@@ -1,5 +1,7 @@
 # GitLab Module
 
+Gitlab Repository: https://gitlab.com/anna-ishkhanyan/spring-petclinic.git
+
 ### Step 1: Create GitLab Repository
 
 Imported the repository in GitLab from Github.
@@ -78,3 +80,6 @@ When changes are merged into the main branch:
 - This image represents the stable version of the application.
 ![3](screenshots/3.png)
 ![4](screenshots/4.png)
+
+The Artifacts stored:
+![20](screenshots/20.png)
